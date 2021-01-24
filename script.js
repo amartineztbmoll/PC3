@@ -3,7 +3,7 @@
 window.onload = function (){
 
     document.getElementById("sign").onclick = function () {
-        validarun();
+        
         var error=false;
         var name=document.getElementById("name").value;
         var sname=document.getElementById("sname").value;
@@ -23,13 +23,17 @@ window.onload = function (){
             error=true;
             document.getElementById("errors").innerHTML="Longitud màxima superada";
           }
-        validarun();
         
 
           if(error==true){
               console.log("Form incorrecte");
           }else{
-            console.log(name,sname,passwd,email,email2,uname,tlf);
+            let usuari = {
+                nom: name,
+                sname: sname,
+              };
+              alert("S'ha realitzar el registre");
+            console.info(usuari);
           }
       
     }
