@@ -11,7 +11,7 @@
 
 <body>
   <h2>Crear un compte</h2>
-  
+  <form>
   <label>Name</label><br> 
   <input type="text" id="name" name="name"><br>
   <div id="errorn"></div>
@@ -24,16 +24,8 @@
   <label>Confirmar email</label><br> 
   <input type="text" id="email2" name="email2"><br>
   <div id="errore2"></div>
-
-  <label>Password</label><br> 
-  <input type="passwd" id="passwd" name="passwd"><br>
-  <div id="errorp"></div>
-  <label>Confirmar Password</label><br> 
-  <input type="passwd2" id="passwd2" name="passwd2"><br>
-  <div id="errorp2"></div>
-
   <label>UserName</label><br> 
-  <input type="text" id="uname" name="uname" onblur="validarun()"><br>
+  <input type="text" id="uname" name="uname"><br>
   <div id="erroru"></div>
   <label>Telèfon</label><br> 
   <input type="text" id="tlf" name="tlf"><br>
@@ -46,9 +38,8 @@
   <label for="age2">I'm 18</label><br>  
   <br>
 
-  <button id="sign">CONFIRMAR</button>
-
-
+  <input type="submit" id="submit">
+</form>
     
 </body>
 </html>
