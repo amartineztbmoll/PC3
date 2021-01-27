@@ -7,39 +7,58 @@
        
     </style>
     <script src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
 </head>
 
 <body>
   <h2>Crear un compte</h2>
-  <form>
+  
   <label>Name</label><br> 
   <input type="text" id="name" name="name"><br>
-  <div id="errorn"></div>
+  <div id="errorn" class="errors"></div>
   <label>Surname</label><br> 
   <input type="text" id="sname" name="sname"><br>
-  <div id="errors"></div>
+  <div id="errors" class="errors"></div>
+  <br>
+  <select name="country" id="paisos">
+  </select>
+  <br><br>
+
   <label>Email</label><br> 
   <input type="text" id="email" name="email"><br>
-  <div id="errore"></div>
   <label>Confirmar email</label><br> 
   <input type="text" id="email2" name="email2"><br>
-  <div id="errore2"></div>
+  <div id="errore" class="errors"></div>
+
+  <label>Password</label><br> 
+  <input type="password" id="passwd" name="passwd">
+  <span class="fa fa-fw fa-eye password-icon show-password" id="span1"></span><br>
+  <label>Confirmar Password</label><br> 
+  <input type="password" id="passwd2" name="passwd2">
+  <span class="fa fa-fw fa-eye password-icon show-password" id="span2"></span>
+  <div id="errorp" class="errors"></div>
+  
+
   <label>UserName</label><br> 
-  <input type="text" id="uname" name="uname"><br>
-  <div id="erroru"></div>
+  <input type="text" id="uname" name="uname" onblur="validarun()"><br>
+  <div id="erroru" class="errors"></div>
   <label>Telèfon</label><br> 
-  <input type="text" id="tlf" name="tlf"><br>
-  <div id="errort"></div>
+  <input type="text" id="tlf" placeholder="699-999999" name="tlf" onblur="validartlf()"><br>
+  <div id="errort" class="errors"></div>
+
 
   <p>Please select your age:</p>
-  <input type="radio" id="age1" name="age" value="0-17">
+  <input type="radio" id="age1" name="age" value="0-17" checked="checked">
   <label for="age1">I'm less than 18</label><br>
   <input type="radio" id="age2" name="age" value="18-99">
   <label for="age2">I'm 18</label><br>  
   <br>
 
-  <input type="submit" id="submit">
-</form>
+  <button id="sign">CONFIRMAR</button>
+
+
     
 </body>
 </html>
