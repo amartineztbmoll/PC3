@@ -1,40 +1,33 @@
 var error=false;
 
-const BASE_URL =
-  "https://restcountries.eu/rest/v2";
-
-const getCountries = async () => {
-  try {
-    const res = await axios.get(`${BASE_URL}/all`);
-
-    const todos = res.data;
-
-    pintarCountries(todos);
-
-    return todos;
-  } catch (e) {
-    console.error(e);
-  }
-};
-
-function pintarCountries(countries) {
-
-    countries.map((country,i) => {
-      var contenedor= document.createElement("option");
-      valor=country.name;
-      contenedor.innerHTML =  country.name;
-      paisos.appendChild(contenedor);
-      contenedor.setAttribute("value",valor);
-
-     
-    })
-}
-
 window.onload = function (){
     getCountries();
     validarform();
-
+    document.getElementById("sign").addEventListener("click", function(event){
+      event.preventDefault();
+    });
+  
 };
+
+function getCountries(){
+  var url= "https://restcountries.eu/rest/v2/all?fields=name";
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        var paisos = JSON.parse(xhr.responseText)
+        var lista = document.getElementById("paisos");
+        paisos.map((country,i) => {
+          var contenedor= document.createElement("option");
+          valor=country.name;
+          contenedor.innerHTML =  country.name;
+          lista.appendChild(contenedor);
+          contenedor.setAttribute("value",valor);
+        })
+      }
+  };
+  xhr.open("GET", url, true);
+  xhr.send();
+}
 
 function validarform(){
   document.getElementById("span1").onclick = mostrar;
@@ -74,8 +67,7 @@ function validarform(){
             error=false;
             document.getElementById("errors").innerHTML="";
           }
-
-        
+ 
         //passwd 
 
         var expreg2 = /^[A-Z]{6}[0-9]{3}$/;
@@ -94,14 +86,9 @@ function validarform(){
             document.getElementById("errorp").innerHTML="La contrasenya ha de tenir 6 lletres MAJUSCULES seguit de 3 numeros";
             error=true;
           }
-        }
-
-        
-        
-
+        }     
         //email
-        
-
+       
         var expreg3 =  /^([a-zA-Z]+)@([a-z]{1,20}).([a-z]{2,3})$/;
         let valor2=expreg3.test(email);
         if((email.length==0) || (email2.length==0)){
@@ -148,15 +135,13 @@ function validarform(){
           validartlf();
           
         }
-
-        
+   
       //comprobar si estan buids
 
       if(name=="" || sname=="" || uname=="" || email=="" || passwd==""|| tlf=="" ){
         error=true;
       }
-        
-       
+      
           //Crear el formulari 
           if(error==true){
               console.log("Form incorrecte");
@@ -169,12 +154,12 @@ function validarform(){
             let usuari = {
                 nom: name,
                 sname: sname,
+                pais:pais,
                 email:email,
                 passwd:passwd,
                 uname:uname,
                 tlf:tlf,
                 tlf:tlf,
-                pais:pais,
               };
               alert("S'ha realitzar el registre");
             console.info(usuari);
